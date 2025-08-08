@@ -1,6 +1,6 @@
 Started by user admin
 [Pipeline] Start of Pipeline
-[Pipeline] node
+[Pipeline] node 
 Running on Jenkins in /var/lib/jenkins/workspace/Mega-project-CI
 [Pipeline] {
 [Pipeline] tool
@@ -599,7 +599,9 @@ DEPRECATED: The legacy builder is deprecated and will be removed in a future rel
             Install the buildx component to build images with BuildKit:
             https://docs.docker.com/go/buildx/
 
-Sending build context to Docker daemon  57.52MB
+Sending build context to Docker daemon  57.52MB
+
+
 Step 1/6 : FROM eclipse-temurin:17-jdk-alpine
  ---> 5d83145c93bb
 Step 2/6 : EXPOSE 8080
