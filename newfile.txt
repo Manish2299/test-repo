@@ -1,1 +1,1 @@
-line2
+this is the content of the new file written second time by manish
