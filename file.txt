@@ -1,1 +1,2 @@
-line3
+line1-change in commit b
+line2
