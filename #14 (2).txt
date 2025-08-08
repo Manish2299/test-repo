@@ -1,0 +1,753 @@
+Started by user admin
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Mega-project-CI
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Git Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/Manish2299/Mega-Project-CI.git
+ > git init /var/lib/jenkins/workspace/Mega-project-CI # timeout=10
+Fetching upstream changes from https://github.com/Manish2299/Mega-Project-CI.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/Manish2299/Mega-Project-CI.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/Manish2299/Mega-Project-CI.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 5c9c213aaff62a8ee5ecb64d228983c50e5aa4dd (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 5c9c213aaff62a8ee5ecb64d228983c50e5aa4dd # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main 5c9c213aaff62a8ee5ecb64d228983c50e5aa4dd # timeout=10
+Commit message: "Update pom.xml"
+ > git rev-list --no-walk 5c9c213aaff62a8ee5ecb64d228983c50e5aa4dd # timeout=10
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Compile)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main
+[Pipeline] {
+[Pipeline] sh
++ mvn compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.example:bankapp >-------------------------
+[INFO] Building bankapp 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The artifact mysql:mysql-connector-java:jar:8.0.33 has been relocated to com.mysql:mysql-connector-j:jar:8.0.33: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+[INFO] 
+[INFO] --- jacoco:0.8.7:prepare-agent (default) @ bankapp ---
+[INFO] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar=destfile=/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ bankapp ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ bankapp ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 8 source files with javac [debug parameters release 17] to target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.384 s
+[INFO] Finished at: 2025-08-05T12:12:10Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Testing)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main
+[Pipeline] {
+[Pipeline] sh
++ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.example:bankapp >-------------------------
+[INFO] Building bankapp 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The artifact mysql:mysql-connector-java:jar:8.0.33 has been relocated to com.mysql:mysql-connector-j:jar:8.0.33: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+[INFO] 
+[INFO] --- jacoco:0.8.7:prepare-agent (default) @ bankapp ---
+[INFO] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar=destfile=/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ bankapp ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ bankapp ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ bankapp ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ bankapp ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug parameters release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ bankapp ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.bankapp.BankappApplicationTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.133 s -- in com.example.bankapp.BankappApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.7:report (report) @ bankapp ---
+[INFO] Loading execution data file /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/jacoco.exec
+[INFO] Analyzed bundle 'bankapp' with 6 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.339 s
+[INFO] Finished at: 2025-08-05T12:12:18Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Trivy FS Scan)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main
+[Pipeline] {
+[Pipeline] sh
++ trivy fs --format table -o fs-report.html .
+2025-08-05T12:12:19Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-08-05T12:12:19Z	INFO	[secret] Secret scanning is enabled
+2025-08-05T12:12:19Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2025-08-05T12:12:19Z	INFO	[secret] Please see also https://trivy.dev/v0.65/docs/scanner/secret#recommendation for faster secret detection
+2025-08-05T12:12:19Z	WARN	[pom] Dependency version cannot be determined. Child dependencies will not be found.	details="https://trivy.dev/v0.65/docs/coverage/language/java#empty-dependency-version"
+2025-08-05T12:12:19Z	INFO	Number of language-specific files	num=1
+2025-08-05T12:12:19Z	INFO	[pom] Detecting vulnerabilities...
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Sonar Analysis)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main
+[Pipeline] {
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: sonar
+[Pipeline] {
+[Pipeline] sh
++ /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=gcbank -Dsonar.projectName=gcbank -Dsonar.java.binaries=target
+12:12:20.989 INFO  Scanner configuration file: /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/conf/sonar-scanner.properties
+12:12:20.994 INFO  Project root configuration file: NONE
+12:12:21.011 INFO  SonarScanner CLI 7.2.0.5079
+12:12:21.014 INFO  Linux 6.8.0-1029-aws amd64
+12:12:22.214 INFO  Communicating with SonarQube Server 9.9.8.100196
+12:12:22.751 INFO  Load global settings
+12:12:22.830 INFO  Load global settings (done) | time=80ms
+12:12:22.833 INFO  Server id: 147B411E-AZh5n86B3Uo5555rhKlf
+12:12:22.839 INFO  User cache: /var/lib/jenkins/.sonar/cache
+12:12:22.846 INFO  Load/download plugins
+12:12:22.846 INFO  Load plugins index
+12:12:22.893 INFO  Load plugins index (done) | time=47ms
+12:12:22.995 INFO  Load/download plugins (done) | time=150ms
+12:12:23.687 INFO  Process project properties
+12:12:23.687 INFO  Process project properties (done) | time=0ms
+12:12:23.691 INFO  Execute project builders
+12:12:23.694 INFO  Execute project builders (done) | time=3ms
+12:12:23.697 INFO  Project key: gcbank
+12:12:23.697 INFO  Base dir: /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main
+12:12:23.697 INFO  Working dir: /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/.scannerwork
+12:12:23.707 INFO  Load project settings for component key: 'gcbank'
+12:12:23.729 INFO  Load project settings for component key: 'gcbank' (done) | time=22ms
+12:12:23.916 INFO  Auto-configuring with CI 'Jenkins'
+12:12:23.921 INFO  Load quality profiles
+12:12:23.964 INFO  Load quality profiles (done) | time=43ms
+12:12:23.969 INFO  Load active rules
+12:12:25.496 INFO  Load active rules (done) | time=1527ms
+12:12:25.503 INFO  Load analysis cache
+12:12:25.518 INFO  Load analysis cache (376 bytes) | time=15ms
+12:12:25.587 INFO  Load project repositories
+12:12:25.606 INFO  Load project repositories (done) | time=19ms
+12:12:25.644 INFO  Indexing files...
+12:12:25.645 INFO  Project configuration:
+12:12:26.002 INFO  21 files indexed
+12:12:26.003 INFO  68 files ignored because of scm ignore settings
+12:12:26.004 INFO  Quality profile for java: Sonar way
+12:12:26.004 INFO  Quality profile for web: Sonar way
+12:12:26.004 INFO  Quality profile for xml: Sonar way
+12:12:26.004 INFO  ------------- Run sensors on module gcbank
+12:12:26.120 INFO  Load metrics repository
+12:12:26.160 INFO  Load metrics repository (done) | time=40ms
+12:12:27.989 INFO  Sensor JavaSensor [java]
+12:12:27.995 INFO  Configured Java source version (sonar.java.source): none
+12:12:28.000 INFO  JavaClasspath initialization
+12:12:28.002 INFO  JavaClasspath initialization (done) | time=2ms
+12:12:28.002 INFO  JavaTestClasspath initialization
+12:12:28.002 INFO  JavaTestClasspath initialization (done) | time=0ms
+12:12:28.013 INFO  Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+12:12:28.017 INFO  Using ECJ batch to parse 9 Main java source files with batch size 51 KB.
+12:12:28.183 INFO  Starting batch processing.
+12:12:28.846 INFO  The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+12:12:30.227 INFO  100% analyzed
+12:12:30.227 INFO  Batch processing: Done.
+12:12:30.228 INFO  Did not optimize analysis for any files, performed a full analysis for all 9 files.
+12:12:30.230 WARN  Dependencies/libraries were not provided for analysis of SOURCE files. The 'sonar.java.libraries' property is empty. Verify your configuration, as you might end up with less precise results.
+12:12:30.231 WARN  Unresolved imports/types have been detected during analysis. Enable DEBUG mode to see them.
+12:12:30.231 WARN  Use of preview features have been detected during analysis. Enable DEBUG mode to see them.
+12:12:30.231 INFO  No "Test" source files to scan.
+12:12:30.231 INFO  No "Generated" source files to scan.
+12:12:30.231 INFO  Sensor JavaSensor [java] (done) | time=2242ms
+12:12:30.231 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+12:12:30.232 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+12:12:30.235 INFO  Importing 1 report(s). Turn your logs in debug mode in order to see the exhaustive list.
+12:12:30.274 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=43ms
+12:12:30.274 INFO  Sensor CSS Rules [javascript]
+12:12:32.335 WARN  Error when running: 'node -v'. Is Node.js available during analysis?
+12:12:32.336 INFO  Hit the cache for 0 out of 0
+12:12:32.337 INFO  Miss the cache for 0 out of 0
+12:12:32.337 INFO  Sensor CSS Rules [javascript] (done) | time=2063ms
+12:12:32.337 INFO  Sensor C# Project Type Information [csharp]
+12:12:32.338 INFO  Sensor C# Project Type Information [csharp] (done) | time=1ms
+12:12:32.338 INFO  Sensor C# Analysis Log [csharp]
+12:12:32.351 INFO  Sensor C# Analysis Log [csharp] (done) | time=13ms
+12:12:32.351 INFO  Sensor C# Properties [csharp]
+12:12:32.351 INFO  Sensor C# Properties [csharp] (done) | time=0ms
+12:12:32.351 INFO  Sensor SurefireSensor [java]
+12:12:32.352 INFO  parsing [/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/surefire-reports]
+12:12:32.409 INFO  Sensor SurefireSensor [java] (done) | time=58ms
+12:12:32.409 INFO  Sensor HTML [web]
+12:12:32.716 INFO  Sensor HTML [web] (done) | time=307ms
+12:12:32.716 INFO  Sensor XML Sensor [xml]
+12:12:32.726 INFO  1 source file to be analyzed
+12:12:32.919 INFO  1/1 source file has been analyzed
+12:12:32.920 INFO  Sensor XML Sensor [xml] (done) | time=204ms
+12:12:32.920 INFO  Sensor TextAndSecretsSensor [text]
+12:12:32.946 INFO  15 source files to be analyzed
+12:12:33.041 INFO  15/15 source files have been analyzed
+12:12:33.041 INFO  Sensor TextAndSecretsSensor [text] (done) | time=121ms
+12:12:33.041 INFO  Sensor VB.NET Project Type Information [vbnet]
+12:12:33.042 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+12:12:33.042 INFO  Sensor VB.NET Analysis Log [vbnet]
+12:12:33.055 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=13ms
+12:12:33.055 INFO  Sensor VB.NET Properties [vbnet]
+12:12:33.055 INFO  Sensor VB.NET Properties [vbnet] (done) | time=0ms
+12:12:33.055 INFO  Sensor IaC Docker Sensor [iac]
+12:12:33.058 INFO  1 source file to be analyzed
+12:12:33.144 INFO  1/1 source file has been analyzed
+12:12:33.144 INFO  Sensor IaC Docker Sensor [iac] (done) | time=89ms
+12:12:33.147 INFO  ------------- Run sensors on project
+12:12:33.214 INFO  Sensor Analysis Warnings import [csharp]
+12:12:33.215 INFO  Sensor Analysis Warnings import [csharp] (done) | time=1ms
+12:12:33.215 INFO  Sensor Zero Coverage Sensor
+12:12:33.217 INFO  Sensor Zero Coverage Sensor (done) | time=2ms
+12:12:33.217 INFO  Sensor Java CPD Block Indexer
+12:12:33.255 INFO  Sensor Java CPD Block Indexer (done) | time=38ms
+12:12:33.267 INFO  SCM Publisher SCM provider for this project is: git
+12:12:33.268 INFO  SCM Publisher 1 source file to be analyzed
+12:12:33.309 INFO  SCM Publisher 0/1 source files have been analyzed (done) | time=40ms
+12:12:33.309 WARN  Missing blame information for the following files:
+12:12:33.309 WARN    * fs-report.html
+12:12:33.309 WARN  This may lead to missing/broken features in SonarQube
+12:12:33.320 INFO  CPD Executor 3 files had no CPD blocks
+12:12:33.322 INFO  CPD Executor Calculating CPD for 11 files
+12:12:33.354 INFO  CPD Executor CPD calculation finished (done) | time=31ms
+12:12:33.464 INFO  Analysis report generated in 107ms, dir size=231.2 kB
+12:12:33.500 INFO  Analysis report compressed in 36ms, zip size=60.3 kB
+12:12:33.521 INFO  Analysis report uploaded in 20ms
+12:12:33.522 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://3.236.138.112:9000/dashboard?id=gcbank
+12:12:33.522 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+12:12:33.522 INFO  More about the report processing at http://3.236.138.112:9000/api/ce/task?id=AZh6Jclq3Uo5555rhUfF
+12:12:34.091 INFO  Analysis total time: 10.959 s
+12:12:34.093 INFO  EXECUTION SUCCESS
+12:12:34.093 INFO  Total time: 13.156s
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Quality Gate Check)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timeout
+Timeout set to expire in 1 hr 0 min
+[Pipeline] {
+[Pipeline] waitForQualityGate
+Checking status of SonarQube task 'AZh6Jclq3Uo5555rhUfF' on server 'sonar'
+SonarQube task 'AZh6Jclq3Uo5555rhUfF' status is 'IN_PROGRESS'
+SonarQube task 'AZh6Jclq3Uo5555rhUfF' status is 'SUCCESS'
+SonarQube task 'AZh6Jclq3Uo5555rhUfF' completed. Quality gate is 'OK'
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main
+[Pipeline] {
+[Pipeline] sh
++ mvn package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.example:bankapp >-------------------------
+[INFO] Building bankapp 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The artifact mysql:mysql-connector-java:jar:8.0.33 has been relocated to com.mysql:mysql-connector-j:jar:8.0.33: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+[INFO] 
+[INFO] --- jacoco:0.8.7:prepare-agent (default) @ bankapp ---
+[INFO] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar=destfile=/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ bankapp ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ bankapp ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ bankapp ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ bankapp ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ bankapp ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.bankapp.BankappApplicationTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.106 s -- in com.example.bankapp.BankappApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.7:report (report) @ bankapp ---
+[INFO] Loading execution data file /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/jacoco.exec
+[INFO] Analyzed bundle 'bankapp' with 6 classes
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ bankapp ---
+[INFO] Building jar: /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/bankapp-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.3.3:repackage (repackage) @ bankapp ---
+[INFO] Replacing main artifact /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/bankapp-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/bankapp-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.975 s
+[INFO] Finished at: 2025-08-05T12:12:44Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Publish To Nexus)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main
+[Pipeline] {
+[Pipeline] withMaven
+[withMaven] Options: []
+[withMaven] Available options: 
+[withMaven] using JDK installation provided by the build agent
+[withMaven] using Maven global settings.xml 'devopsshack' with NO Maven servers credentials provided by Jenkins
+[withMaven] using Maven installation 'maven3'
+$ /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven3/bin/mvn --version
+[withMaven] found Maven version: Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+[Pipeline] {
+[Pipeline] sh
++ mvn deploy
+----- withMaven Wrapper script -----
+Picked up JAVA_TOOL_OPTIONS: -Dmaven.ext.class.path="/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main@tmp/withMavenef81e676/pipeline-maven-spy.jar" -Dorg.jenkinsci.plugins.pipeline.maven.reportsFolder="/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main@tmp/withMavenef81e676" 
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven3
+Java version: 17.0.15, vendor: Ubuntu, runtime: /usr/lib/jvm/java-17-openjdk-amd64
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "6.8.0-1029-aws", arch: "amd64", family: "unix"
+[INFO] [jenkins-event-spy] Generate /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main@tmp/withMavenef81e676/maven-spy-20250805-121246-79411027659865520915263.log.tmp ...
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.example:bankapp >-------------------------
+[INFO] Building bankapp 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The artifact mysql:mysql-connector-java:jar:8.0.33 has been relocated to com.mysql:mysql-connector-j:jar:8.0.33: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+[INFO] 
+[INFO] --- jacoco:0.8.7:prepare-agent (default) @ bankapp ---
+[INFO] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar=destfile=/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ bankapp ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ bankapp ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ bankapp ---
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ bankapp ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ bankapp ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+Picked up JAVA_TOOL_OPTIONS: -Dmaven.ext.class.path="/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main@tmp/withMavenef81e676/pipeline-maven-spy.jar" -Dorg.jenkinsci.plugins.pipeline.maven.reportsFolder="/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main@tmp/withMavenef81e676" 
+[INFO] Running com.example.bankapp.BankappApplicationTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.125 s -- in com.example.bankapp.BankappApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.7:report (report) @ bankapp ---
+[INFO] Loading execution data file /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/jacoco.exec
+[INFO] Analyzed bundle 'bankapp' with 6 classes
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ bankapp ---
+[INFO] 
+[INFO] --- spring-boot:3.3.3:repackage (repackage) @ bankapp ---
+[INFO] Replacing main artifact /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/bankapp-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/bankapp-0.0.1-SNAPSHOT.jar.original
+[INFO] 
+[INFO] --- install:3.1.3:install (default-install) @ bankapp ---
+[INFO] Installing /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/pom.xml to /var/lib/jenkins/.m2/repository/com/example/bankapp/0.0.1-SNAPSHOT/bankapp-0.0.1-SNAPSHOT.pom
+[INFO] Installing /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/bankapp-0.0.1-SNAPSHOT.jar to /var/lib/jenkins/.m2/repository/com/example/bankapp/0.0.1-SNAPSHOT/bankapp-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- deploy:3.1.3:deploy (default-deploy) @ bankapp ---
+[INFO] Downloading from maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/0.0.1-SNAPSHOT/maven-metadata.xml
+[INFO] Downloaded from maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/0.0.1-SNAPSHOT/maven-metadata.xml (768 B at 6.2 kB/s)
+[INFO] Uploading to maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/0.0.1-SNAPSHOT/bankapp-0.0.1-20250805.121246-9.pom
+[INFO] Uploaded to maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/0.0.1-SNAPSHOT/bankapp-0.0.1-20250805.121246-9.pom (3.7 kB at 56 kB/s)
+[INFO] Uploading to maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/0.0.1-SNAPSHOT/bankapp-0.0.1-20250805.121246-9.jar
+[INFO] Uploaded to maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/0.0.1-SNAPSHOT/bankapp-0.0.1-20250805.121246-9.jar (57 MB at 32 MB/s)
+[INFO] Downloading from maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/maven-metadata.xml
+[INFO] Downloaded from maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/maven-metadata.xml (278 B at 19 kB/s)
+[INFO] Uploading to maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/0.0.1-SNAPSHOT/maven-metadata.xml
+[INFO] Uploaded to maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/0.0.1-SNAPSHOT/maven-metadata.xml (768 B at 21 kB/s)
+[INFO] Uploading to maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/maven-metadata.xml
+[INFO] Uploaded to maven-snapshots: http://44.222.103.252:8081/repository/maven-snapshots/com/example/bankapp/maven-metadata.xml (278 B at 7.7 kB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.563 s
+[INFO] Finished at: 2025-08-05T12:12:54Z
+[INFO] ------------------------------------------------------------------------
+[INFO] [jenkins-event-spy] Generated /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main@tmp/withMavenef81e676/maven-spy-20250805-121246-79411027659865520915263.log
+[Pipeline] }
+[withMaven] JacocoPublisher is no longer implicitly used with `withMaven` step.
+[withMaven] Jacoco plugin has been deprecated and should not be used anymore.
+[withMaven] CoveragePublisher will be used instead.
+
+[withMaven] artifactsPublisher - Archive artifact pom.xml under com/example/bankapp/0.0.1-SNAPSHOT/bankapp-0.0.1-SNAPSHOT.pom
+[withMaven] artifactsPublisher - Archive artifact target/bankapp-0.0.1-SNAPSHOT.jar under com/example/bankapp/0.0.1-SNAPSHOT/bankapp-0.0.1-SNAPSHOT.jar
+[withMaven] junitPublisher - Archive test results for Maven artifact com.example:bankapp:jar:0.0.1-SNAPSHOT generated by maven-surefire-plugin:test (default-test): target/surefire-reports/*.xml
+[withMaven] junitPublisher - Jenkins JUnit Attachments Plugin not found, can't publish test attachments.
+[withMaven] junitPublisher - Jenkins JUnit Flaky Test Handler Plugin not found, can't publish JUnit flaky tests reports.
+Recording test results
+[Checks API] No suitable checks publisher found.
+[withMaven] coveragePublisher - Archive JaCoCo analysis results for Maven artifact MavenArtifact{com.example:bankapp:jar:0.0.1-SNAPSHOT(version: 0.0.1-SNAPSHOT, snapshot:true) } generated by PluginInvocation{org.jacoco:jacoco-maven-plugin:0.8.7@report  report}, resultFile: /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/site/jacoco/jacoco.xml
+[Coverage] Recording coverage results
+[Coverage] Creating parser for JaCoCo Coverage Reports
+[Coverage] Searching for all files in '/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main' that match the pattern 'target/site/jacoco/jacoco.xml'
+[Coverage] Traversing of symbolic links: enabled
+[Coverage] -> found 1 file
+[Coverage] Successfully parsed file '/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/target/site/jacoco/jacoco.xml'
+[Coverage] MODULE: 0.00% (0/1)
+[Coverage] PACKAGE: 0.00% (0/5)
+[Coverage] FILE: 0.00% (0/6)
+[Coverage] CLASS: 0.00% (0/6)
+[Coverage] METHOD: 0.00% (0/58)
+[Coverage] LINE: 0.00% (0/165)
+[Coverage] BRANCH: 0.00% (0/8)
+[Coverage] INSTRUCTION: 0.00% (0/576)
+[Coverage] LOC: 165
+[Coverage] CYCLOMATIC_COMPLEXITY: 62
+[Coverage] Successfully processed file 'target/site/jacoco/jacoco.xml'
+[Coverage] Resolving source code files...
+[Coverage] Searching for source code files in:
+[Coverage] -> src/main/java
+[Coverage] -> /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/src/main/java
+[Coverage] -> resolved absolute paths for all 8 source files
+[Coverage] Making paths of 8 source code files relative to workspace root...
+[Checks API] No suitable checks publisher found.
+[Coverage] Obtaining result action of reference build
+[Coverage] Reference build recorder is not configured
+[Coverage] -> Found no reference build
+[Coverage] No quality gates have been set - skipping
+[Coverage] Executing source code painting...
+[Coverage] Painting 8 source files on agent
+[Coverage] -> finished painting successfully
+[Coverage] -> zipping sources from folder '/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/coverage' as '/var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main/coverage-sources.zip'
+[Coverage] Copying painted sources from agent to build folder
+[Coverage] -> extracting...
+[Coverage] -> done
+[Coverage] Skipping cleaning of source code files in old builds
+[Coverage] Finished coverage processing - adding the action to the build...
+[withMaven] Jenkins FindBugs Plugin not found, don't display org.codehaus.mojo:findbugs-maven-plugin:findbugs results in pipeline screen.
+[withMaven] jgivenPublisher - Jenkins JGiven Plugin not found, do not archive jgiven reports.
+[withMaven] Jenkins Task Scanner Plugin not found, don't display results of source code scanning for 'TODO' and 'FIXME' in pipeline screen.
+[withMaven] Publishers: Pipeline Graph Publisher: 3 ms, Generated Artifacts Publisher: 235 ms, Junit Publisher: 13 ms, Coverage Publisher: 78 ms
+[Pipeline] // withMaven
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker Image Build & Tag)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withDockerRegistry
+$ docker login -u manish1232 -p ******** https://index.docker.io/v1/
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main@tmp/4bd27cb8-3552-475d-b529-43a2515e6e18/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
+[Pipeline] {
+[Pipeline] sh
++ docker build -t manish1232/bankapp:v14 .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  57.52MB
+Step 1/6 : FROM eclipse-temurin:17-jdk-alpine
+ ---> 5d83145c93bb
+Step 2/6 : EXPOSE 8080
+ ---> Using cache
+ ---> 6b6183a86599
+Step 3/6 : ENV APP_HOME /usr/src/app
+ ---> Using cache
+ ---> c2d1f3d9b670
+Step 4/6 : COPY target/*.jar $APP_HOME/app.jar
+ ---> c700475561dc
+Step 5/6 : WORKDIR $APP_HOME
+ ---> Running in 99edd87b5fa0
+ ---> Removed intermediate container 99edd87b5fa0
+ ---> 59894d2b276b
+Step 6/6 : CMD ["java", "-jar", "app.jar"]
+ ---> Running in b97593718b25
+ ---> Removed intermediate container b97593718b25
+ ---> b932fad641c2
+Successfully built b932fad641c2
+Successfully tagged manish1232/bankapp:v14
+[Pipeline] }
+[Pipeline] // withDockerRegistry
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Scan Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main
+[Pipeline] {
+[Pipeline] sh
++ trivy image --format table -o image-report.html manish1232/bankapp:v14
+2025-08-05T12:13:00Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-08-05T12:13:00Z	INFO	[secret] Secret scanning is enabled
+2025-08-05T12:13:00Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2025-08-05T12:13:00Z	INFO	[secret] Please see also https://trivy.dev/v0.65/docs/scanner/secret#recommendation for faster secret detection
+2025-08-05T12:13:09Z	INFO	Detected OS	family="alpine" version="3.22.1"
+2025-08-05T12:13:09Z	INFO	[alpine] Detecting vulnerabilities...	os_version="3.22" repository="3.22" pkg_num=77
+2025-08-05T12:13:09Z	INFO	Number of language-specific files	num=1
+2025-08-05T12:13:09Z	INFO	[jar] Detecting vulnerabilities...
+2025-08-05T12:13:09Z	INFO	Table result includes only package filenames. Use '--format json' option to get the full path to the package file.
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withDockerRegistry
+$ docker login -u manish1232 -p ******** https://index.docker.io/v1/
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CI-main@tmp/d477b613-ee0d-4552-808a-bb68a0c1505d/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
+[Pipeline] {
+[Pipeline] sh
++ docker push manish1232/bankapp:v14
+The push refers to repository [docker.io/manish1232/bankapp]
+64a223e3ae65: Preparing
+8c829c68d921: Preparing
+2a6e9a92620d: Preparing
+6e46fdd6bb61: Preparing
+9d9a04527518: Preparing
+418dccb7d85a: Preparing
+418dccb7d85a: Waiting
+9d9a04527518: Layer already exists
+8c829c68d921: Layer already exists
+2a6e9a92620d: Layer already exists
+6e46fdd6bb61: Layer already exists
+418dccb7d85a: Layer already exists
+64a223e3ae65: Pushed
+v14: digest: sha256:989be0b7a2c95bc119cc81cc1d881440531b586d7ba298552bd50ec8a628e7c2 size: 1580
+[Pipeline] }
+[Pipeline] // withDockerRegistry
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Update Manifest File in Mega-Project-CD)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] sh
++ git clone https://github.com/Manish2299/Mega-Project-CD.git
+Cloning into 'Mega-Project-CD'...
+[Pipeline] dir
+Running in /var/lib/jenkins/workspace/Mega-project-CI/Mega-Project-CD
+[Pipeline] {
+[Pipeline] sh
++ sed -i s|Manish2299/bankapp:.*|Manish2299/bankapp:v14| Manifest/manifest.yaml
+sed: can't read Manifest/manifest.yaml: No such file or directory
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] emailext
+Sending email to: mk634184@gmail.com
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 2
+Finished: FAILURE
