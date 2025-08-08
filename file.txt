@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 line1-change in commit C
 line3-chnage in commit C
+=======
+line3
+>>>>>>> parent of 3b91131 (commit B)
